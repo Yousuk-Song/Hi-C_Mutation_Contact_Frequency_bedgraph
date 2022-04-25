@@ -29,7 +29,7 @@ for line in dfh1:
 	if if_true:
 		os.system(f"rm {chrom}.{pos}.{sys.argv[1]}_target_mate_depth.txt")
 	else:
-		os.system(f"{Pipeline_Dir}/pair_depth_bedgraph.sh {chrom}.{pos}.{sys.argv[1]}_target_mate_depth.txt {sys.argv[2]}")
+		os.system(f"{Pipeline_Dir}/pair_depth_bedgraph.sh {chrom}.{pos}.{sys.argv[1]}_target_mate_depth.txt {sys.argv[3]}")
 		os.system(f"rm {chrom}.{pos}.{sys.argv[1]}_target_mate_depth.txt")
 
 
