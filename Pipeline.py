@@ -1,14 +1,13 @@
-#!/home/eaststar0/miniconda3/bin/python
 
 import sys
 import pysam
 import os
 
-dfh1 = open("/data2/home/ujkim/HNT_pipeline/bam_name/"+sys.argv[1]+".reheader.bam.output.csv")
-dfh2 = pysam.AlignmentFile(sys.argv[1]+".markdup.bam")
+dfh1 = open(sys.argv[2])	# mutation.csv file
+dfh2 = pysam.AlignmentFile(sys.argv[1])		# alignment.bam file
 
-HNT_Dir = "/data2/home/ujkim/HNT_pipeline"
-window = int(sys.argv[2])
+Pipeline_Dir =
+window = int(sys.argv[3])
 
 for line in dfh1:
 	line = line.rstrip().split()
@@ -30,7 +29,7 @@ for line in dfh1:
 	if if_true:
 		os.system(f"rm {chrom}.{pos}.{sys.argv[1]}_target_mate_depth.txt")
 	else:
-		os.system(f"{HNT_Dir}/pair_depth_bedgraph.sh {chrom}.{pos}.{sys.argv[1]}_target_mate_depth.txt {sys.argv[2]}")
+		os.system(f"{Pipeline_Dir}/pair_depth_bedgraph.sh {chrom}.{pos}.{sys.argv[1]}_target_mate_depth.txt {sys.argv[2]}")
 		os.system(f"rm {chrom}.{pos}.{sys.argv[1]}_target_mate_depth.txt")
 
 
