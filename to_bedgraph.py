@@ -1,4 +1,3 @@
-#!/home/eaststar0/miniconda3/bin/python
 
 import sys
 dfh=open(sys.argv[1],'r')
@@ -7,7 +6,7 @@ window = int(sys.argv[2])
 
 count=0
 D = {}
-for line in dfh:
+for line in dfh:			# count bedgraph score
 	line = line.rstrip()
 	if line not in D:
 		D[line] = 1
