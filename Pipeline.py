@@ -17,13 +17,10 @@ for line in dfh1:
 	rfh = open(f"{chrom}.{pos}.{sys.argv[1]}_target_mate_depth.txt",'w')
 	if_true = 1
 	for read in dfh2.fetch(chrom, pos, pnext):
-		if read.reference_start <= pos:
-			if None not in [read.reference_start, read.reference_end]:
-				if dfh2.get_reference_name(read.reference_id) == chrom: 
-					line2=str(read).split()
-					rfh.write(dfh2.get_reference_name(read.reference_id)+'\t'+str((int(read.reference_start)//window)*window)+'\n')
-					rfh.write(dfh2.get_reference_name(read.next_reference_id)+'\t'+str((int(read.next_reference_start)//window)*window)+'\n')
-					if_true = 0
+		if dfh2.get_reference_name(read.reference_id) == chrom: 
+			line2=str(read).split()
+			rfh.write(dfh2.get_reference_name(read.next_reference_id)+'\t'+str((int(read.next_reference_start)//window)*window)+'\n')
+			if_true = 0
 	rfh.close()
 
 	if if_true:
